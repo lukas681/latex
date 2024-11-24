@@ -1,0 +1,4 @@
+% \newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+% \newcommand{\deltaone}{\ensuremath{\delta_{\text{gauss}}}}
+\newcommand{\deltaone}{\ensuremath{\delta_{gauss}}}
+\newcommand{\deltatwo}{\ensuremath{inf}}
