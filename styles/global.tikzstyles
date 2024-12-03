@@ -36,7 +36,7 @@
 \tikzstyle{simple directed edge}=[->, draw=black, thick, line width=0.75mm]
 \tikzstyle{simple dashed directed edge}=[->, draw=black, dashed]
 \tikzstyle{SLIGHTLYDASHED}=[-, dotted, fill=none, draw={rgb,255: red,128; green,128; blue,128}]
-\tikzstyle{simple dashed directed edge}=[->, draw=black, line width=0.75mm, dashed]
+\tikzstyle{simple dashed directed edge}=[->, draw=black, line width=0.5mm, dashed]
 \tikzstyle{simple dashed directed edge not thick}=[->, draw=black, line width=0.45mm, dashed]
 \tikzstyle{simple}=[->, draw=black, thick]
 \tikzstyle{noise arrow}=[draw={rgb,255: red,128; green,44; blue,127}, fill=none, ->, line width=0.4mm]
@@ -45,3 +45,4 @@
 \tikzstyle{thick}=[-, fill=none, line width=1.25pt]
 \tikzstyle{noise arrow stopper}=[-, line width=0.35mm, draw={rgb,255: red,116; green,66; blue,128}]
 \tikzstyle{black dotted}=[-, dotted, line width=1pt]
+\tikzstyle{new edge style 1}=[line width=0.5mm, draw=black, ->, fill=none]
