@@ -26,6 +26,7 @@
 \tikzstyle{big dash thick}=[-, thick, dashed, dash pattern=on 4mm off 2mm, fill={rgb,255: red,178; green,255; blue,253}]
 \tikzstyle{new edge style 0}=[-, fill={rgb,255: red,70; green,255; blue,243}, line width=1.5pt]
 \tikzstyle{FILLGREEN}=[-, fill={rgb,255: red,144; green,237; blue,134}, line width=1pt]
+\tikzstyle{FILLRED}=[-, fill={rgb,255: red,237; green,59; blue,36}, line width=1pt]
 \tikzstyle{FILLBLUE}=[-, fill={rgb,255: red,162; green,232; blue,230}, line width=1pt]
 \tikzstyle{FILLPURPLE}=[-, fill={rgb,255: red,255; green,233; blue,239}]
 \tikzstyle{FILLDARKBLUE}=[-, fill={rgb,255: red,238; green,230; blue,255}]
