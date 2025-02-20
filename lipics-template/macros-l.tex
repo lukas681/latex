@@ -1,0 +1,144 @@
+% Shortcuts that make our life easier
+
+%\def{}{}
+%\def\lra{\ensuremath\longrightarrow}
+\newcommand{\algorithmnamelong}{PAMST-F(\algorithmname)\xspace}
+\newcommand{\rnmBottomAlternative}{\textsc{RNM-Bottom-Alternative}\xspace}
+\newcommand{\rnmBottom}{\textsc{RNM-Bottom-Standard}\xspace}
+
+\newcommand{\rnmCompleteFast}{\textsc{Faster-Discretized-Report-Noisy-Max}\xspace}
+\newcommand{\vectorize}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\zcdp}{z-CDP\xspace}
+
+\newcommand{\domain}{\ensuremath{\mathbb{N}^{|\mathcal{X}|}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\G}{\ensuremath{G=(V,\E)}\xspace}
+\newcommand{\Gw}{\ensuremath{G=(\mathcal{V},\mathcal{E}, w)}}
+\newcommand{\err}{\ensuremath{\mathrm{Error}}}
+\newcommand{\expD}{\ensuremath{{\tt Exp}}}
+\newcommand{\maxExpD}{\ensuremath{\tt MaxExp}}
+\newcommand{\UniD}{\ensuremath{{\tt Uni}}} % :/
+\newcommand{\lapD}{\ensuremath{{\tt Lap}}}
+\newcommand{\binomialD}{\ensuremath{{\tt Bin}}}
+\newcommand{\normalExpD}{\ensuremath{{{\tt N}}}}
+\newcommand{\priorityQueueName}{\ensuremath{{\tt PrivatePQ}}}
+
+\newcommand{\round}[2]{{#1}\left\lfloor \dfrac{{#2}}{#1} \right\rfloor}
+\newcommand{\roundInline}[2]{{#1}\left\lfloor \frac{{#2}}{#1} \right\rfloor}
+
+\newcommand\abs[1]{\left|#1\right|}
+
+\crefname{lstlisting}{Listing}{Listings}
+\newcommand{\basicCodeStyle}{\ttfamily\small}
+\newcommand{\keywordCodeStyle}{\bfseries}
+\newcommand{\builtInCodeStyle}{\itshape\color{orangeish}}
+\newcommand{\typesCodeStyle}{\ttfamily\small\color{blueish}}
+
+\lstdefinelanguage{plan}{
+	classoffset=0,
+	morekeywords={True, False, return, null, if, in, while, do, else, case, break, continue, for, def, log, sqrt, norm},
+		keywordstyle=\keywordCodeStyle,
+	classoffset=1,
+	morekeywords={privQuant, recenter,  scale, clip, noise},
+	keywordstyle=\typesCodeStyle,
+	classoffset=2,
+	morekeywords={estimateStd, rankError, divideBudget, size, scope, center},
+	keywordstyle=\builtInCodeStyle,
+	classoffset=0,
+	morecomment=[s]{/*}{*/},
+	morecomment=[l]//,
+	morestring=[b]",
+	morestring=[b]'
+}
+
+\lstset{
+	basicstyle=\basicCodeStyle,
+	keywordstyle=\keywordCodeStyle,
+	numberstyle=\scriptsize\sffamily,
+	commentstyle={\bfseries\color{purpleish}},
+	tabsize=4,
+	captionpos=b,
+	frame=lines,
+	numbers=left,
+	language=plan,
+	xleftmargin=2.5em,
+	framexleftmargin=2.5em,
+	backgroundcolor=\color{grayish},
+	breaklines=false,
+	breakautoindent=false,
+	postbreak=\space,
+	breakindent=5pt,
+	escapeinside={/*@}{@*/},
+	aboveskip=3pt,
+	belowskip=3pt,
+	belowcaptionskip=0pt,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	mathescape=true
+}
+
+% Further Typesetting
+\renewcommand\vec{\mathbf}
+
+\DeclareMathOperator*{\argmax}{\tt arg\,max}
+\DeclareMathOperator*{\argmin}{\tt arg\,min}
+
+\DeclareMathOperator*{\argmaxs}{\tt arg\,max^*}
+\DeclareMathOperator*{\argmins}{\7t arg\,min^*}
+\newcommand\mybox[1]{\parbox[t]{0.5\textwidth}{\raggedright$\displaystyle #1 $}}
+
+\newcommand\Tstrut{\rule{0pt}{3.8ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.6ex]{0pt}{0pt}}   % = `bottom' strut
+
+\newcommand{\lukas}[1]{\textcolor{magenta}{[Lukas: #1]}}
+\newcommand{\hanwen}[1]{\textcolor{orange}{[Hanwen: #1]}}
+\newcommand{\rasmus}[1]{\textcolor{teal}{[Rasmus: #1]}}
+
+
+% More Shortcuts
+%mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+%mathscr
+\newcommand{\sA}{\mathscr{A}}
+
+% Maybe we need this in the future as well
+\renewcommand{\algorithmicprocedure}{\textbf{Procedure}}
+\renewcommand{\algorithmicrequire}{\quad\enspace\;\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\quad\enspace\;\textbf{Ensure:}}
+
+% Requires tikz
+% xshift controls the length of the bar
+% yshift the vertical position
+\newcommand{\doublebar}[1]{
+    \begin{tikzpicture}[baseline=(X.base)]
+        \node[inner sep=0] (X) {\textsf{#1}};
+         \draw ([yshift=-0.35pt, xshift=0pt]X.north west) -- ([yshift=-0.35pt, xshift=-0.5pt]X.north east);
+        \draw ([yshift=0.4pt, xshift=0pt]X.south west) -- ([yshift=0.4pt, xshift=-0.5pt]X.south east);
+%        \draw ([yshift=-0.4pt]X.north west) -- ([yshift=-0.4pt]X.north east);
+ %       \draw ([yshift=0.4pt]X.south west) -- ([yshift=0.4pt]X.south east);
+    \end{tikzpicture}
+}

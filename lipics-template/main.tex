@@ -1,0 +1,522 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+% ext libs, mostly taken from previous NeurIPS submission
+\usepackage{multirow}
+% \usepackage{xcolor}
+\usepackage{amsmath}
+\let\Bbbk\relax
+\usepackage{amssymb}
+\usepackage{amsthm}
+\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
+
+\usepackage{mathtools}
+
+\usepackage{hyperref}
+\usepackage[capitalize,noabbrev]{cleveref} % Must be load after ams* % Must be load after ams*-packages
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{relsize}
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{arydshln}
+
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{breqn}
+
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{colortbl}       % Colorful tables
+\usepackage{stackengine}
+\usepackage{lipsum}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage[export]{adjustbox}
+
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
+
+% Adding tikzit, Does it work with ACM?
+\usepackage{conf/tikzit}
+\input{conf/tikz-style}
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{footnote}
+\usepackage{booktabs}
+\usepackage{soul}
+
+% Making it colorful
+    \definecolor{orangeish}{HTML}{f1a340} %orange
+    \definecolor{grayish}{HTML}{f7f7f7} %white-gray
+    \definecolor{purpleish}{HTML}{998ec3} %purple
+    \definecolor{blueish}{HTML}{004488}
+    \definecolor{darkgreen}{RGB}{2,100,64} % Even darker
+    % \definecolor{darkgreen}{RGB}{0,0,0,} % Even darker
+    \definecolor{lightgreen}{HTML}{b2f2bb}
+    \definecolor{lightblueish}{RGB}{230,244,255}
+\PassOptionsToPackage{table,xcdraw,svgnames,dvipsnames}{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{assm}[theorem]{Assumptioo}
+
+\title{Tight Bounds for Private Graph Data Release}
+\author{Rasmus Pagh and Lukas Retschmeier}
+\date{Jan 2025}
+\input{macros-l}
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+Privately releasing the set of edges of a \emph{Minimum-Weight Spanning Trees}, \emph{Shortest Path Trees} or a  \emph{Minimum-Weight Matching} under edge-weight differential privacy has been introduced by \cite*{sealfon_shortest_2016}. 
+In this setting, a graph topology $G = (V, E)$ is publicly known and we want to protect the weights on each individual edge.
+It is natural to consider the $\ell_1$ or the $\ell_\infty$ neighboring relationship, where neighboring datasets are bounded by how much the weights can change.
+
+While recently, there has been much focus on privately releasing an MST, tight bounds on the other problems are less understood.
+While we know, that all of them can be solved by simply perturbating the input, tightness results are only known up to logarithmic factors.
+
+
+Interestingly, for the MST problem, it has been shown that a simply input perturbation together with privately running \emph{any} MST algorithms yields exactly the same utility as all previous techniques. 
+\subsection{Previous Work}
+We will shortly survey the state of the problems individually.
+
+\paragraph{Minimum Spanning Trees (MST).}
+Tight bounds for pure DP and both the $\ell_1$ and $\ell_\infty$ neighboring relationship are known, but for approximate DP we only have tight bounds for the $\ell_\infty$ relationship.
+This work solved the gap by providing tight bounds for this case as well.
+
+\paragraph{Minimum-Weight Perfect Matchings (MWPM).}
+We are unaware of any other work releasing the set of edges of a MWPM other then the original \cite{sealfon_shortest_2016}.
+There has been some work on private matching like in \cite{hsu2014} or more recently in \cite{}, but those consider a different setting 
+\lukas{TODO. Describe this setting and check. the STOC paper is actually before Sealfon!}
+
+\paragraph{Shortest Path Trees (SPT).}
+Again, releasing the edges of a SPT has not been subject to study after introduced by \cite{sealfon_shortest_2016} in 2016.
+
+\subsection{Releasing Minimium Spanning tree under $\ell_1$ and $(\epsilon, \delta)$-DP}
+
+%\input{table-of-results}
+\subsection{Our Contributions}
+
+We generalize a lower bound due to Sealfon and construct a hard, dense mst instance.
+
+\textbf{Short Preliminaries and Notation}
+That is for all neighboring vectors $\vec{X} \sim _H \vec{X'} \in [r]^{d}$ if their hamming distance is at most 1.
+We write $w_{i,j}$ to denote the weight of $w_e$ for an edge $e = \{i, j\}$.
+If not clear from the context, we subscript the neighborhood relationship and write $\sim_H$ for the hamming and $\sim_{\ell_1}$ for the $\ell_1$ neighborhood.
+
+We use the operator $\in_R: 2^A  \rightarrow A$ and denote $X \in_R A$ is drawn uniformly at random from the set $A$.
+
+\rasmus{Maybe abstract to vectors in $[r]^d$ for integers $r$ and $d$; I think we want Hamming neighborhood, i.e., differ in one entry; maybe mention the neighborhood relation in the theorem statement}
+
+\subsection {MSTs under $\ell_1$ and approximate DP }
+
+%\begin{theorem}\label{th:lower}
+%Assuming $n>1$, if algorithm $B:[n]^{[n]} \rightarrow [n]$ is  $(\epsilon, \delta)$-dp under the hamming-distance neighboring relation, and we uniformly sample a random input $\vec{X} \in_R [n]^{n}$, then we have for all indices $i$:
+
+%\[\Pr[B(X) \neq X_i] \geq   \dfrac{(n-1)(1-n^2\delta)}{e^\epsilon + n}\]
+%\rasmus{Maybe more natural to upper bound the probability of equality?}
+%\end{theorem}
+
+We start by generalizing a proof technique that appeared in \cite{sealfon_shortest_2016} and bound the probability that any $(\epsilon, \delta)$-DP mechanism $B$ can leak some of the input bits.
+
+
+\lukas{Do we rather need a $B:[n]^d \rightarrow [n]^d$?}
+
+\lukas{Observation: Could we already use the $\ell_1$ neighborhood here and just set the neighboring $X_i +- 1$. Then we would get away with some $\ell_1$ assumption.}
+\begin{theorem}
+Assuming $n>1$, if algorithm $B:[n]^{d} \rightarrow [n]$ is  $(\epsilon, \delta)$-dp under the hamming neighborhood, then for $\vec{X} \in_R [n]^d$ drawn uniformly at random, we get $\Pr\left[B(\vec{X}) = \vec{X_i}\right]\leq\dfrac{e^\epsilon}{n} + \delta$.
+\end{theorem}
+\begin{proof}
+First fix some coordinate $i\in [d]$ and  assume that $\vec{X} = (\vec{X}_{<i}, X_i, \vec{X}_{>i}) \in_{R} [n]^d$ is uniformly drawn.
+Then we can bound the probability that $B(\vec{X})$ outputs some $\vec{X}_i$ by fixing entries that are not $X_i$:
+\lukas{Fix -d}
+\begin{align}
+Pr[B(\vec{X}) = \vec{X}_i] &= 
+\dfrac{1}{n^{d-1}}\sum_{\vec{X}_{<i}\in [n]^{i-1}} 
+\sum_{\vec{X}_{>i} \in [n]^{d-i}}\left(\Pr_{X_i \in_R [n]}\left[B(\vec{X}_{<i},X_i,\vec{X}_{>i})= X_i\right]\right)\\
+& \leq n^{1-d}\sum_{\vec{X}_{<i}\in [n]^{i-1}} \label{line:enumerate}
+\sum_{\vec{X}_{>i} \in [n]^{d-i}}\left(e^\epsilon \Pr_{X_i \in_R [n]}\left[B(\vec{X}_{<i},1,\vec{X}_{>i})= X_i\right] + \delta]\right)\\
+& \leq n^{1-d}\sum_{\vec{X}_{<i}\in [n]^{i-1}}  \sum_{\vec{X}_{>i} \in [n]^{d-i}}\left(e^\epsilon \dfrac{1}{n} + \delta\right)\label{line:fix}\\
+&\leq \frac{e^\epsilon}{n}+ \delta
+%^n\Pr[X_i=j]\Pr[B(\vec{X})_i=j|\vec{X}_i = j]\\
+%&\leq \sum\limits_{j=1}^n\dfrac{1}{n}\cdot Pr[B(\vec{X}_i)_i = j] \\
+%&\leq \dfrac{1}{n}\sum_{j=1}^n\left(e^\epsilon\Pr[B(\vec{X})_i = j] + \delta\right)
+%\leq \dfrac{e^\epsilon}{n} + \delta\\
+\end{align}
+In line \ref{line:enumerate}, we use the fact that the full vector $\vec{X}$ is uniformly drawn, and we can just enumerate over all events.
+%, we can simply enumerate all events while keeping $\vec{X}_i$ free.
+Recall that we use the hamming neighborhood relationship.
+Then finally in step \ref{line:fix}, we use the privacy guarantees of mechanism $B$ and flip to a neighboring dataset (wlog we set $X_i = 1$).
+
+Small side note: we also get
+\begin{align*}
+& \Pr[B(\vec{X}) \neq j] = 1 - \Pr[B(\vec{X}) = j] \leq \dfrac{e^\epsilon}{n} + \epsilon \\
+&\Leftrightarrow  \Pr[B(\vec{X}) = j] \geq \dfrac{n \cdot (1-\delta)-e^\epsilon}{n}
+\end{align*}
+\end{proof}
+
+\subsection{Reduction from MST}
+
+We are now ready to tighten the lower boind lower bound given by Sealfon in \cite{sealfon_shortest_2016} by a factor of (...).
+
+The idea is to encode a vector $\vec{X}$ into a dense graph $G$ where privately releasing the MST exactly corresponds to privately releasing the vector.
+In a second step, we transfer the previously established bound from \cref{th:lower}.
+More precisely, we are going to prove the following statement.
+
+\begin{theorem}
+There exists a graph for which there exists no $(\epsilon, \delta)$-dp private mechanism $M_{V,E}:\mathcal{R}^E \rightarrow \{T|T \text{is a mst on} (V,E, \vec{W})\}$ under the $\ell_1$ neighboring relationship with error xx for sufficiently  $\delta< xx$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+
+\paragraph{Graph Construction}
+We start by describing how to encode some $\vec{X} \in [n]^d$ into a graph where privately releasing the vector corresponds exactly to privately releasing the MST of this graph.
+
+\noindent\textit{Encoding.} We first state a function ${\cA_{\mathrm{ENCODE}}:[n]^d \rightarrow (\{V_l,V_r\}, E)}$ returning a graph $G$ with $(d + n)$ and $(n \cdot d + n - 1)$ edges E.
+We construct the graph in the following way. 
+
+\begin{enumerate}
+    \item We create a path of length $n$: $V_r = \{r_1, ..., r_n\}$ be vertices encoding the possible values $[n]$ and link $r_i$ and $r_{i+1}$ with edges weighted $w_{r_i,r_{i+1}} = 0$.
+    \item For each $x_i$, we create a vertex $l_i$ 
+    and connect it to each $r_i$ while 
+    \[
+    \forall i, j \text{~we set~} w_{l_i, r_j} = \begin{cases}
+       0 \text{~if~} x_i = j\\
+       R \text{~else}
+    \end{cases}
+    \]
+    \noindent We denote these $V_l = \bigcup l_i $.
+\end{enumerate}
+
+\noindent\textit{Decoding.} Let's define ${\cA_{\mathrm{DECODE}}:\{\mathrm{spanning\_trees}(G)}\} \rightarrow \{1, ..., n\}^n$ that takes an MST on this instance and converts it back to a vector in $[n]^d$.
+Let 
+\[
+x_i = \min\limits_{j \in [n]}{w_{l_i,r_j}}
+\]
+
+For any arbitrarily chosen mst algorithm $\cA_{\mathrm{MST}}:G \rightarrow \mathrm{spanning\_trees(G)}$ and any vector $\vec{X}$, we have $\vec{X} = \cA_{\mathrm{DECODE}}\left(\cA_{\mathrm{MST}}\left(\cA_{\mathrm{ENCODE}}\right)\right)(\vec{X})$
+
+\lukas{Maybe a proof for that? At least some explanation}
+
+\begin{theorem}
+There exists a graph for which there exists no $(\epsilon, \delta)$-dp private mechanism $M_{V,E}:\mathcal{R}^E \rightarrow \mathrm{spanning\_trees}(G)$ under the $\ell_1$ neighboring relationship with error xx for sufficiently large $\delta$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+Assuming two hamming neighboring vectors, we can bound the $\ell_1$ neighboring relationship on the encoded graph:
+%\begin{lemma}
+%For each $\vec{X} \sim \vec{X'}$, we have:
+%\[
+%||\cA_{\mathrm{ENCODE}}(\vec{X}) - %\cA_{\mathrm{ENCODE}}(\vec{X'})|| \leq 2R
+%\]
+%\end{lemma}
+%\begin{proof}
+%    Trivial.
+%\end{proof}
+%\begin{proof}
+%Observe the 
+%\end{proof}
+
+\begin{lemma}
+Let $\vec{X} \sim \vec{X'}\in [n]^d$ be two neighboring vectors under the hamming neighboring relationship.
+Furthermore, let $M_{V,E}$ be an $(\epsilon, \delta)$-DP MST algorithm under the $\ell_1$ neighboring relationship.
+Then
+\[
+X \longrightarrow M_{V,E}(\cA_{\textrm{ENCODE}}(X))
+\]
+is $(2R\epsilon, 2Re^{2R\epsilon}\delta)$-DP
+\end{lemma}
+\begin{proof}
+Observe that for $\vec{X}\sim \vec{X'}$, we have 
+\[
+||\cA_{\mathrm{ENCODE}}(\vec{X}) - \cA_{\mathrm{ENCODE}}(\vec{X'})|| \leq 2R
+\].
+Notice that our graph is defined by the $\ell_1$ neighboring relationship. 
+Denote $z = n(d+1)-1$.
+For two given $\vec{X} \sim_H \vec{X'}$ that differ in coordinate $i$ (thus $x_i \neq x'_i$ only on coordinate $i$) we can give a chain of $\ell_1$ neighboring graph weights $W^{(z)}$, such that 
+\[
+\vec{W}^{(0)} =\cA_{\mathrm{ENCODE}}(\vec{X}) \sim_1 \vec{W}^{(1)} \sim_1 \cdots \sim_1 \vec{W}^{(2R-1)} \sim_1  \cA_{\mathrm{ENCODE}}(\vec{X'}) = \vec{W}^{(2R)}
+\]
+For $i\in [z-1]$, we inductively increase (decrease) the weights for the two edges $e = \{l_i, r_{x_i}\}$ and $e' = \{l_i, r_{x'_i}\}$ that are different in the encoding.
+Let $\vec{W}_0 = \cA_{\textrm{ENCODE}}(\vec{X})$, and let
+\[\vec{W}^i = \begin{cases}
+    \vec{W}^{(i-1)}, \textbf{~but~} w^{(i)}_{e} = w^{(i-1)}_{e}- 1 \textbf{~if~} i\leq R\\
+    \\
+    \vec{W}^{(i-1)}, \textbf{~but~} w^{(i)}_{e'} = w^{(i-1)}_{e'} +  1 \textbf{~if~} i > R\\
+    %\left(w^{(i-1)}_1, \cdots, w^{(i-1)}_{l_i, r_i} +1, \cdots, w^{(i-1)}_{z}\right) \textbf{~if~} i > R\\
+\end{cases}
+\]
+Because $M$ is $(\epsilon, \delta)$-DP, we know for all $Z\subseteq E$:
+
+\begin{align*}
+\Pr[M_{V,E}(\cA_{\textrm{ENCODE}}(\vec{X}) = Z] &\leq e^\epsilon \Pr[M_{V,E}(W^{(1)}) = Z] + \delta\\
+& \leq e^\epsilon \left( e^\epsilon \Pr[M_{V,E}(W^{(2)}) = Z] + \delta \right) + \delta\\
+& \leq \cdots \\
+& \leq e^{2R\epsilon} \left(\Pr[M_{V,E}(\cA_{\mathrm{ENCODE}}(\vec{X'}))) = Z] \right) +2R \delta e^{2R\epsilon}\\
+\end{align*}
+The last inequality follows because we can upper bound the sum of the deltas by  $\delta \sum\limits_{i = 0}^{2R-1} e^{i\epsilon}\leq 2R\delta e^{2R}$.
+
+Now, we are ready to derive a contradiction.
+\end{proof}
+
+\lukas{TODO: Fill this.}
+
+\subsection{Lowering the Upper Bound of Shortest Paths}
+
+\begin{lemma}[Tailbound on sum of laplacians \cite{dwork_algorithmic_2014}]
+Let $Y_1, \cdots Y_k \sim \lapD(b_i)$ be independent variables and let $Y = \sum_i Y_i$ and $b_\max = \max_i b_i$. Let $\tau \geq \sqrt{\sum_i(b_i)^2}$, and $0 <\lambda < \frac{2\sqrt{2}\tau^2}{b_\max}$. Then
+\[
+\Pr[Y > \lambda] \leq \exp\left(-\dfrac{\lambda^2}{8\tau^2}\right)
+\]
+\end{lemma}
+
+%\lukas{---------- Don't read from here on. In Progress! ---------}
+
+\begin{lemma}
+For any graph $G$, the number of paths with $k$ steps starting on a vertex $v$ is at most $n^k$
+\end{lemma}
+\begin{proof}
+By a simple combinatorial argument on a complete graph $K_n$, we get:
+\[
+\#\mathrm{Distinct~Paths} = \dfrac{(n-1)!}{(n-k)!} \leq n^k
+\]
+\end{proof}
+
+Recall that \cite{sealfon_shortest_2016}'s graph construction takes a $P_i$ and adds two edges between each pair of vertices.
+\begin{lemma}[Upper bound for path graph]
+The graph in the lower bound in \cite{sealfon_shortest_2016} actually has utility $\mathcal{O}(n)$.
+\end{lemma}
+\begin{proof}
+Assume $X_1,\cdots,X_k \sim \lapD(1/\epsilon)$ and $X = \sum X_i$ for any path $P$ of length $k$
+Then:
+\[
+\Pr[X > c n / \epsilon] \leq \exp\left(-\dfrac{c^2n^2/\epsilon^2}{8k/\epsilon^2}\right)
+ = \exp\left(-\dfrac{c^2}{8}\cdot \dfrac{n^2}{k}\right).
+\]
+
+By a union bound on all $2^n$ paths:
+\[
+\Pr[\exists P: X_P \geq cn /\epsilon] \leq 2^n e^{-c'n} \leq e^n e^{-c'n}  =e^{n(1-c')}
+\]
+which is exponentially small for $c>1$.
+\end{proof}
+
+\lukas{TODO: I guess we have to reformulate these lemmas.}
+\begin{lemma}
+{\color{red} This is not working! Needs some more thought.}
+For all graphs $G$ and $c \in (0,1)$, adding noise drawn from $\lapD(1/\epsilon)$ is $\epsilon$-dp allows to compute paths between each pair of vertices with error less than $\mathcal{O}(n \sqrt{\log n}/\epsilon)$
+\end{lemma}
+
+\begin{proof}
+We observe that any graph has at most $n^n$ distinct paths. 
+WLOG assumes that we have a complete graph $K_n$.
+Let $c= 2\sqrt{2 c' \log n}$ and hence, for each path of length $k$, we get
+\begin{align*}
+\Pr[\exists P: X_P > c' n \log n /\epsilon] &\leq n^k \exp\left(-\dfrac{c' n^2 \log n}{k}\right) \\
+&=  \exp\left(n\log n - \dfrac{c' n^2 \log n}{k}\right)
+\end{align*}
+
+The longest path can have up to $n-1$ edges, then the term above is exponentially small in $n$, if $n \log n - c' n \log n < 1$.
+Hence, $c' > 1$ suffices, giving the desired result.
+\end{proof}
+
+Using the same technique, we get a similar result if the diameter of the graph is bounded by $\frac{n}{\sqrt{\log n}}$.
+
+\begin{lemma}
+For all graphs $G$ where the diameter is bounded by $k \leq \frac{n}{\sqrt{\log n}}$,  adding noise drawn from $\lapD(1/\epsilon)$ is $\epsilon$-dp allows to compute paths between each pair of vertices with error less than $\mathcal{O}(n/\epsilon)$ and therefore matches the known lower bound by Sealfon \cite{sealfon_shortest_2016}.
+\end{lemma} 
+As previously, we have:
+\begin{proof}
+\begin{align*}
+\Pr[\exists P: X_P > c n /\epsilon] &\leq \exp\left(k \log n \right) \exp\left(-\dfrac{c^2n^2}{8k}\right) \\
+&= \exp\left(k \log n - \frac{c^2 n^2}{8k}\right) 
+\end{align*}
+which is negative, exactly if $k^2 \log n < \dfrac{c^2 n^2}{8}$ and hence $k < \dfrac{c n}{2\sqrt{2\log n}}$. 
+Setting $c = 2\sqrt{2}$ finishes the proof.
+\end{proof}
+
+\textbf{What about the gap of }
+
+\begin{equation*}
+\scalebox{0.9}{
+  \tikzfig{fig/graph}
+  }
+\end{equation*}
+
+\textbf{Questions / Ideas}
+\begin{enumerate}
+    \item Graphs with bounded diameter?
+\end{enumerate}
+
+\section{Minimum Weight Perfect Matching}
+
+We are now turning our attention to the following problem: 
+Given a publicly known graph $G = (V, E)$ with private weight vector $\vec{w} \in \R^E$, we want to release a set of edges $M \subseteq E$ where each vertex $v$ is adjacent to exactly on edge in $M$ and minimizes the weight of $w(M)$. 
+We denote $A$ as the mechanism that returns an approximately minimum weight perfect matching (MWPM) under edge-weight differential privacy, where we want to protect the individual weights.
+Denote $\cM$ as the set of all possible perfect matching on $G$, and then we want for all $M \in \cM(G)$ and neighboring ($\ell_1$ and $\ell_\infty$ resp.):
+\[
+\Pr[A(G, \vec{w}) = M] \leq  e^\epsilon \Pr[A(G, \vec{w'}) = M] + \delta \enspace.
+\]
+
+We are interested in ensuring that the weight of the released matching is not too bad (in an additive sense).
+Therefore, we want to minimize the error \footnote{Note that the bound can be stated as \emph{expected error} as well} $w(A(G, \vec{w}) - w(M^*)$, the absolute difference to the real MWPM $M^*$ with probability $\gamma$.
+
+Recently, \citet{hladik2025} have shown tight bounds for releasing an MST under pure DP.
+They used a packing argument to show that the errors of $\Theta(n \log n / \epsilon)$ and $\Theta(n^2 \log n)$ are tight for the $\ell_1$ and $\ell_\infty$ neighboring relationship.
+Their main argument relies on the fact that one can greedily construct a large set of weight vectors on a very dense graph that are $\Theta(n)$ in hamming distance apart.
+We will now show that the same argument hold for Minimum-Weight Perfect Matching as well and prove the following theorem
+
+\paragraph{Matchings}: We define the \emph{hamming metric} on matchings as $d_H(M_1, M_2) = |M_1 \setminus M_2| = |M_2 \setminus M_1 |$.
+
+We will use the indicator  function to denote the weights of our hard instance:
+\begin{definition}
+    $\mathbbold{1}_M(e)  = \begin{cases} 0 & \text{if~} e \in M \\ 1 & \text{otherwise} \enspace.  \end{cases}$
+\end{definition}
+And extend this notation to $\mathbbold{1}_M(M') = \sum_{e \in M'}\mathbbold{1}_M(e)$.
+Observe that ${\mathbbold{1}_M(M) = 0}$ and $||\mathbbold{1}_{M_1}(M_2) - \mathbbold{1}_{M_2}(M_1)||_1 \leq 2 d_H(M_1, M_2)$.
+
+\lukas{TODO: Reflect $d \in \Theta(n)$. Check constants.}
+
+\begin{theorem}[Lower Bound Pure DP]
+Fix the topology of some graph $G$.
+Given a set of matchings $M \subseteq \cM(G)$, let $d \in \Theta(n)$ be such that $d_H(M_1, M_2) > d$ for all $M_1, M_2 \in S$.
+let $\cA$ be $\epsilon$-differentially private. with respect to $\sim_1$. 
+Then there exists weights $\vec{w}\in \R^E$, such that 
+
+\[
+\Pr\left[w(M) \leq w(M^*) + \log n / (c \cdot \epsilon)-1/4\right] \leq 1/\sqrt{|S|}
+\]
+where $M^*$ denotes the real minimal-weight perfect matching.
+\end{theorem}
+
+We will prove that such an exponentially sized set $S$ with $|S| \in 2^{\Theta(n \log n}$ exists later in xx.
+
+We are using the packing argument due to xxx:
+\begin{lemma}
+    Let $\cW \subseteq \cX$ be a collection of datasets all at distance at most $r$ from some fixed dataset $w_0 \in \cX$, and let $\{\cL_w\}_{w \in \cW}$ be a collection fo disjoint subsets of the output space $\cM$. 
+    If there is a $\epsilon$-differentially private mechanism $\cA: \cX \rightarrow \cW$ such that $\Pr[\cA(w) \in \cL_w] \geq p$ for every $w \in \cW$, then
+    \[
+    p \leq r^{r \epsilon} / {|\cW|}
+    \]
+\end{lemma}
+
+
+\begin{enumerate}
+    \item Can we invoke the Packing Argument for pure DP to show tight (worst-case) $\Theta(n \log n)$? Can we also show $\Theta(n^2 \log n)$ for $\ell_\infty$? YES!
+    \item Greedy Algorithm https://www.ee.columbia.edu/~jelena/lec21.pdf should also give a $\mathcal{\tilde{O}}(n^{3/2})$ approximation for $\ell_\infty$ / approximate DP. Is it tight?
+\end{enumerate}
+
+
+\newpage
+\bibliography{references}
+
+\subsection{old stuff}
+\newpage
+{\color{gray}
+
+\begin{theorem}\label{th:lower}
+Assuming $n>1$, if algorithm $B:[n]^{[n]} \rightarrow [n]$ is  $(\epsilon, \delta)$-dp and we uniformly sample a random input $X\leftarrow U\left([n]\right)^{n}$, then we have for all indices $i$:
+
+\[\Pr[B(X) \neq X_i] \geq   \dfrac{(n-1)(1-n^2\delta)}{e^\epsilon + n}\]
+
+(((Maybe more natural to upper bound the probability of equality?)))
+\end{theorem}
+
+\begin{proof}
+We consider a family of algorithms $B_{i,j}$ that returns $B(Y)$ where $Y$ is equal to $X$ except that coordinate $i$ is replaced by $j$; if $B$ is differentially private with respect to $X$ then so is $B_{i,j}$.
+%We shortly denote as $(X_{-i},j)$ to quickly represent a vector that has value $j\in [n/2]$ on index $i$. (((I prefer this way of saying it: 
+First, note that for $B_{i, j}$: 
+%(((Here we want to reason about $B_{i,j}$)))
+\begin{align*}
+\Pr[B(X) = X_i]  &= \dfrac{1}{n}\sum\limits_{j=1}^{n}\Pr[B_{i,j}(\vec{X}) = j] \\
+FIXME. \Pr[B(X) = X_i]  &= \dfrac{1}{n}\sum\limits_{j=1}^{n}\Pr[B_{i,j}(\vec{X}) = j] \\
+&\leq \dfrac{1}{n} \sum\limits_{j=1}^{n}  \dfrac{1}{n-1} \sum_{j' \neq j}\left( e^\epsilon \Pr[B_{i, j'}(\vec{X}) = j] + \delta\right) \\
+&\leq \dfrac{1}{n} \sum\limits_{j=1}^{n} \left( \dfrac{1}{n-1} \sum_{j' \neq j}\left( e^\epsilon \Pr[B_{i, j'}(\vec{X}) = j]\right) + \delta \right)\\
+FIXME& \leq  \dfrac{e^\epsilon}{n^2-n} \Pr[B(\vec{X}) \neq X_i] + n^2 \delta\\
+%&\leq \dfrac{e^\epsilon}{n}+n^2\delta
+\end{align*}
+
+Furthermore, because $\Pr[B(\vec{X}) = X_i] = 1 - \Pr[B(\vec{X}) \neq  X_i]$, we get
+
+\begin{align}
+ 1-n^2\delta&\leq \left(\dfrac{e^\epsilon}{n(n-1)} + 1\right)\Pr[B(\vec{X}\neq X_i)]\\
+&\leq \dfrac{e^\epsilon + n}{(n-1)}\Pr[B(\vec{X}\neq X_i)]
+\end{align}
+
+and hence 
+\[
+\\Pr[B(\vec{X}\neq X_i)] \geq \dfrac{(1-n^2\delta)(n-1)}{e^\epsilon + n}
+\]
+\end{proof}
+
+A second proof with a slightly different result: 
+
+TODO rephrase with r AND rephrase 
+\begin{proof}
+\begin{align*}
+    1\geq \Pr[B(\vec{X})\neq \vec{X}_i] &= \sum\limits_{j\in [n]} \Pr[\vec{X}_i = j]\cdot \Pr[B(\vec{X}_i)\neq j|\vec{X}_i = j]\\
+    &= \dfrac{1}{n} \sum\limits_{j\in [n]}\Pr[B_{i,j}(\vec{X}) \neq  j] \\
+    &=\dfrac{1}{n} \sum_{j \in [n]} \Pr[B_{i,j}(\vec{X}) \in [n]\backslash\{j\} ]\\
+    &=\dfrac{1}{n} \sum_{j \in [n]} \left(\dfrac{1}{n-1}\sum_{j' \neq j} \Pr[B_{i,j}(\vec{X}) \in [n]\backslash\{j\} ]\right)\\
+    &\geq \dfrac{1}{n} \sum_{j \in [n]} \left( \dfrac{e^{-\epsilon}}{n-1}\sum_{j' \neq j} (\Pr[B_{i,j'}(\vec{X}) \in [n]\backslash\{j\}] - \delta)\right) \\
+    &= -e^{-\epsilon}\delta + \dfrac{1}{n} \sum_{j' \in [n]} \left( \dfrac{e^{-\epsilon}}{n-1} \sum_{j \neq j'} \Pr[B_{i,j'}(\vec{X}) \in [n]\backslash\{j\}] \right) \\
+    &= e^{-\epsilon} \left(-\delta + \sum_{j \in [n]} \sum_{j' \neq j}\dfrac{1}{n} \Pr[B_{i,j'}(\vec{X}) = j'])\right) \\
+    &= e^{-\epsilon} \left(-\delta + \sum_{j \in [n]} \sum_{j' \neq j} \Pr[\vec{X}_i =  j'] \cdot \Pr[B(\vec{X})=j'|\vec{X}_i = j'])\right) \\
+    &e^{-\epsilon}\left(-\delta + (n-1) \cdot \sum\limits_{j' \in [n]}\Pr[B(\vec{X})=j' \wedge \vec{X}_i = j']\right) \\
+    &e^{-\epsilon}\left(-\delta + (n-1) \cdot \Pr[B(\vec{X}) = \vec{X}_i]\right)
+\end{align*}
+Hence, we can upper bound
+
+\[
+\Pr[B(\vec{X}=\vec{X}_i)] \leq \dfrac{e^\epsilon+\delta n}{n-1}
+\]
+
+\end{proof}
+
+Some notes for me. Or later.
+\begin{enumerate}
+    \item First equality: Condition a single index on all distinct outcomes.
+    \item Second: $\Pr[\vec{X_i} = j] = 1/n$ because of uniformly drawing $\vec{X}$ and conditioning can be seen as ```replacing```
+    \item (3) Holds because it is just the complementary event on all different $j' \neq j$
+    \item (4) Because B is dp
+    \item last steps: flipping sum and reverting steps
+\end{enumerate}
+
+%(1- n^2\delta)
+%(eêps+n**2+n)/
+
+%Note that for $n=1$, this exactly matches Sealfon, 
+
+\begin{enumerate}
+    \item  Why is it necessary to sum over all $j'$. Privacy should already be given for a single change.  (((I think this is just a way of getting an expression that equals the probability of not outputting $X_i$, but maybe there is a more direct way of arguing.)))
+    \item I have the feeling that the bound also holds for shortest path trees because in our construction, the MST is also the shortest path tree - essentially regardless which vertex we start with.
+\end{enumerate}
+}
+
+
+\end{document}

@@ -1,0 +1,73 @@
+% Project Specific Commands
+
+\renewcommand{\epsilon}{\varepsilon}
+%\setul{0.5ex}{0.3ex}
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+% Seaborn palette
+\setul{}{1.5pt} % Underline thickness
+\definecolor{sbOrange}{HTML}{D78355}
+\definecolor{sbGreen}{HTML}{60AD72}
+\definecolor{sbRed}{HTML}{C7595C}
+\definecolor{sbBlue}{HTML}{4C72B0}
+
+% Making it colorful
+    \definecolor{nicepurple}{HTML}{802c7f}
+    \definecolor{orangeish}{HTML}{f1a340} %orange
+    \definecolor{grayish}{HTML}{f7f7f7} %white-gray
+    \definecolor{purpleish}{HTML}{998ec3} %purple
+    \definecolor{blueish}{HTML}{004488}
+    \definecolor{darkgreen}{RGB}{2,100,64} % Even darker
+    \definecolor{lightgreen}{HTML}{b2f2bb}
+    \definecolor{lightblueish}{RGB}{230,244,255}
+\PassOptionsToPackage{table,xcdraw,svgnames,dvipsnames}{xcolor}
+
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{problem}[theorem]{Problem}
+%\newtheorem{notation}[theorem]{Notation}
+%\newtheorem{example}[theorem]{Example}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{observation}[theorem]{Observation}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{claim}[theorem]{Claim}
+%\newtheorem{fact}[theorem]{Fact}
+%\newtheorem{conj}[theorem]{Conjecture}
+%\newtheorem{assm}[theorem]{Assumption}
+
+% \newtheorem{comment}[theorem]{Comment}
+\newenvironment{sproof}{%
+  \renewcommand{\proofname}{Proof Sketch}\proof}{\endproof}
+
+\renewenvironment{quote}
+  {\list{}{\rightmargin=0.3cm \leftmargin=0.3cm}%
+   \item\relax}
+  {\endlist}
+
+\renewcommand{\algorithmicprocedure}{\textbf{Procedure}}
+\renewcommand{\algorithmicrequire}{\quad\enspace\;\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\quad\enspace\;\textbf{Ensure:}}
+
+\newif\ifcomment
+\commenttrue
+\definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
+
+\ifcomment
+	\newcommand{\anders}[1]{\textcolor{blue}{[Anders: #1]}}
+	\newcommand{\rasmus}[1]{\textcolor{blue}{[RASMUS: #1]}}
+	\newcommand{\lukas}[1]{\textcolor{blue}{[Lukas: #1]}}
+	% \newcommand{\hanwen}[1]{{\color{orange}{HANWEN: #1}}}
+	\newcommand{\fix}[1]{\textcolor{red}{#1}}
+\newcommand{\suggest}[1]{\textcolor{DarkGreen}{#1}}
+\newcommand{\minoredit}[1]{\textcolor{DarkGreen}{#1}}
+\else
+\makeatletter
+\newcommand{\hao}[1]{%
+  \@bsphack
+  \@esphack
+}
+\makeatother
+\fi
+
+
+
+

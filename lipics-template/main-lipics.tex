@@ -1,0 +1,105 @@
+\documentclass[a4paper,UKenglish,thm-restate]{templates/lipics-v2021}
+
+\input{conf/packages.tex}
+\input{conf/defs}
+\input{conf/confs}
+\input{conf/macros-lukas}
+\input{conf/lipic-fixes}
+
+%This is a template for producing LIPIcs articles. 
+%See lipics-v2021-authors-guidelines.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+%for section-numbered lemmas etc., use "numberwithinsect"
+%for enabling cleveref support, use "cleveref"
+%for enabling autoref support, use "autoref"
+%for anonymousing the authors (e.g. for double-blind review), add "anonymous"
+%for enabling thm-restate support, use "thm-restate"
+%for enabling a two-column layout for the author/affilation part (only applicable for > 6 authors), use "authorcolumns"
+%for producing a PDF according the PDF/A standard, add "pdfa"
+
+%\pdfoutput=1 %uncomment to ensure pdflatex processing (mandatatory e.g. to submit to arXiv)
+\hideLIPIcs  %uncomment to remove references to LIPIcs series (logo, DOI, ...), e.g. when preparing a pre-final version to be uploaded to arXiv or another public repository
+
+
+%\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
+
+\title{The Power of Postprocessing: Tight Bounds for Private Graph Problems}
+%\title{The Correlated Stability Histogram}
+%\titlerunning{Dummy short title} %TODO optional, please use if title is longer than one line
+
+
+\author{Anders Aaamand}{BARC, University of Copenhagen, Denmark}{andersaamanda@gmail.com}{https://orcid.org/0000-0003-2805-9939}{}
+\author{Rasmus Pagh}{BARC, University of Copenhagen, Denmark}{pagh@di.ku.dk}{https://orcid.org/0000-0003-2805-9939}{}
+\author{Lukas Retschmeier}{BARC, University of Copenhagen, Denmark}{lure@di.ku.dk}{https://orcid.org/0000-0003-2805-9939}{}
+
+\authorrunning{C. Lebeda and L. Retschmeier} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
+
+\Copyright{Christian Janos Lebeda, and Lukas Retschmeier} %
+%\Copyright{} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+\ccsdesc{Security and privacy~Privacy-preserving protocols}
+%\ccsdesc[100]{\textcolor{red}{Replace ccsdesc macro with valid one}} %TODO mandatory: Please choose ACM 2012 classifications from https://dl.acm.org/ccs/ccs_flat.cfm 
+
+\keywords{differential privacy, correlated noise, sparse gaussian histograms} %TODO mandatory; please add comma-separated list of keywords
+
+%\category{} %optional, e.g. invited paper
+
+%\relatedversion{arXiv} %optional, e.g. full version hosted on arXiv, HAL, or other respository/website
+%\relatedversiondetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93]{Classification (e.g. Full Version, Extended Version, Previous Version}{URL to related version} %linktext and cite are optional
+
+%\supplement{}%optional, e.g. related research data, source code, ... hosted on a repository like zenodo, figshare, GitHub, ...
+%\supplementdetails[linktext={opt. text shown instead of the URL}, cite=DBLP:books/mk/GrayR93, subcategory={Description, Subcategory}, swhid={Software Heritage Identifier}]{General Classification (e.g. Software, Dataset, Model, ...)}{URL to related version} %linktext, cite, and subcategory are optional
+
+%\funding{(Optional) general funding statement \dots}%optional, to capture a funding statement, which applies to all authors. Please enter author specific funding statements as fifth argument of the \author macro.
+
+\funding{%\acknowledgements{
+Retschmeier carried out this work at Basic Algorithms Research Copenhagen (BARC), which was supported by the VILLUM Foundation grant 54451. 
+\emph{Providentia}, a Data Science Distinguished Investigator grant from the Novo Nordisk Fonden, supported Retschmeier.
+The work of Lebeda is supported by grant ANR-20-CE23-0015 (Project PRIDE).
+}
+
+%\nolinenumbers %uncomment to disable line numbering
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\EventEditors{}
+%\EventNoEds{}
+\EventLongTitle{1st Annual Super Nice Conference}
+\EventShortTitle{ASNC}
+\EventAcronym{ASNC}
+\EventYear{20XX}
+\EventDate{XXXX x--x, 20XX}
+\EventLocation{AoE}
+%\EventLogo{}
+\SeriesVolume{}
+\ArticleNo{~}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\input{content/abstract}
+\input{content/introduction}
+\input{content/preliminaries}
+\input{content/related}
+% \input{content/todo}
+
+%%
+%% End of file `sample-sigconf.tex'.
+%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+
+\nocite{*}
+\bibliographystyle{plainnat}
+\bibliography{references.bib}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+
+\appendix
+\newpage
+\input{content/appendix}
+
+\end{document}
