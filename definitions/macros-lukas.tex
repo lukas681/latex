@@ -1,0 +1,121 @@
+% Shortcuts that make my life easier
+
+\newcommand{\vectorize}[1]{\ensuremath{\boldsymbol{#1}}}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\newcommand{\round}[2]{{#1}\left\lfloor \dfrac{{#2}}{#1} \right\rfloor}
+\newcommand{\roundInline}[2]{{#1}\left\lfloor \frac{{#2}}{#1} \right\rfloor}
+\newcommand\abs[1]{\left|#1\right|}
+
+\crefname{lstlisting}{Listing}{Listings}
+\newcommand{\basicCodeStyle}{\ttfamily\small}
+\newcommand{\keywordCodeStyle}{\bfseries}
+\newcommand{\builtInCodeStyle}{\itshape\color{orangeish}}
+\newcommand{\typesCodeStyle}{\ttfamily\small\color{blueish}}
+
+% Further Typesetting
+\renewcommand\vec{\mathbf} % Display vectors as bold
+\DeclareMathOperator*{\argmax}{\tt arg\,max}
+\DeclareMathOperator*{\argmin}{\tt arg\,min}
+\DeclareMathOperator*{\argmaxs}{\tt arg\,max^*}
+\DeclareMathOperator*{\argmins}{\7t arg\,min^*}
+\newcommand\mybox[1]{\parbox[t]{0.5\textwidth}{\raggedright$\displaystyle #1 $}}
+%\newcommand\Tstrut{\rule{0pt}{3.8ex}}         % = `top' strut
+%\newcommand\Bstrut{\rule[-0.6ex]{0pt}{0pt}}   % = `bottom' strut
+
+\renewcommand{\algorithmicprocedure}{\textbf{Procedure}}
+\renewcommand{\algorithmicrequire}{\quad\enspace\;\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\quad\enspace\;\textbf{Ensure:}}
+
+% mathcal - made easy
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+% PMB - made easy
+\newcommand{\sA}{\mathscr{A}}
+%pmb
+\newcommand{\pmba}{\pmb{a}}
+\newcommand{\pmbb}{\pmb{b}}
+\newcommand{\pmbc}{\pmb{c}}
+\newcommand{\pmbe}{\pmb{e}}
+\newcommand{\pmbf}{\pmb{f}}
+\newcommand{\pmbp}{\pmb{p}}
+\newcommand{\pmbs}{\pmb{s}}
+\newcommand{\pmbu}{\pmb{u}}
+\newcommand{\pmbv}{\pmb{v}}
+\newcommand{\pmbx}{\pmb{x}}
+\newcommand{\pmby}{\pmb{y}}
+\newcommand{\pmbz}{\pmb{z}}
+\newcommand{\pmbpi}{\pmb{\pi}}
+\newcommand{\pmbPhi}{\pmb{\Phi}}
+\newcommand{\pmbnu}{\pmb{\nu} }
+\newcommand{\pmbomega}{\pmb{\omega}}
+
+\newcommand{\mfrkP}{\mathfrak{P}}
+\newcommand{\mfrkM}{\mathfrak{M}}
+\newcommand{\mrmA}{\mathrm{A}}
+\newcommand{\mrmM}{\mathrm{M}}
+\newcommand{\mrmH}{\mathrm{H}}
+
+%mathbb
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\mbbS}{\mathbb{S}}
+\newcommand{\mbbU}{\mathbb{U}}
+\newcommand{\mbbZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+
+%mathbf
+\newcommand{\mbfA}{\mathbf{A}}
+\newcommand{\mbfC}{\mathbf{C}}
+\newcommand{\mbfD}{\mathbf{D}}
+\newcommand{\mbfP}{\mathbf{P}}
+\newcommand{\mbfS}{\mathbf{S}}
+\newcommand{\mbfX}{\mathbf{X}}
+\newcommand{\mbfZ}{\mathbf{Z}}
+
+% Operators
+\newcommand{\norm}[1]{\left\Vert {#1} \right\Vert}
+\newcommand{\PAREN}[1]{{\left( {#1} \right)}}
+\newcommand{\Biggparen}[1]{{\Bigg( {#1} \Bigg)}}
+\newcommand{\Bigparen}[1]{{\Big( {#1} \Big)}}
+\newcommand{\bigparen}[1]{{\big( {#1} \big)}}
+\newcommand{\paren}[1]{{( {#1} )}}
+\newcommand{\angles}[1]{{\langle {#1} \rangle}}
+\newcommand{\bracket}[1]{{[ {#1} ]}}
+\newcommand{\BigBracket}[1]{{\big[ {#1} \big]}}
+\newcommand{\BRACKET}[1]{{\left[ {#1} \right]}}
+\newcommand{\card}[1]{\left| {#1} \right|}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\tildeeps}{\tilde{\varepsilon}}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+ 
